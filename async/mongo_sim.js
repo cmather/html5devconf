@@ -1,21 +1,21 @@
+var Future = require('fibers/future');
+
 var findOne = function (sel, callback) {
   var future = new Future;
   setTimeout(function () {
-    callback(null /* error */, {
-      title: "My great title!"
-    });
+    future.return({title: "My great title!"});
   }, 2000);
 
   return future.wait();
 };
 
 getCollection = function (name, callback) {
+  var future = new Future;
   setTimeout(function () {
     console.log("Got collection! " + name);
-    callback(null, {
-      findOne: findOne
-    });
+    future.return({findOne: findOne});
   }, 2000);
+  return future.wait();
 };
 
 module.exports = {

@@ -1,9 +1,12 @@
 var findOne = function (sel, callback) {
+  var future = new Future;
   setTimeout(function () {
     callback(null /* error */, {
       title: "My great title!"
     });
   }, 2000);
+
+  return future.wait();
 };
 
 getCollection = function (name, callback) {

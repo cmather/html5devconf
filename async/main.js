@@ -44,6 +44,8 @@ var tryUsingFutures = function () {
   Fiber(myFunc).run();
 };
 
-var collection = mongo.getCollection('items');
-var doc = collection.findOne({_id: 5});
-console.log("doc: " + JSON.stringify(doc));
+Fiber(function () {
+  var collection = mongo.getCollection('items');
+  var doc = collection.findOne({_id: 5});
+  console.log("doc: " + JSON.stringify(doc));
+}).run();

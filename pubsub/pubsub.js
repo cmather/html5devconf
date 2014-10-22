@@ -10,7 +10,6 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.publish('allItems', function () {
-    debugger;
     return Items.find({},{sort: {order: 1}});
   });
 
